@@ -9,11 +9,11 @@ eventlet.monkey_patch()
 ip_addr = []
 def tara(ip):
 	try:
-		with eventlet.Timeout(3):
+		with eventlet.Timeout(0.2):
 			address = 'http://'+ip+':8545'
 			data = {"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}
 			headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-			r = requests.post(address, data=json.dumps(data), headers=headers, timeout=3)
+			r = requests.post(address, data=json.dumps(data), headers=headers, timeout=0.2)
 			return r.text
 	except: 
 	  pass
